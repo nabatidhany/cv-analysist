@@ -3,7 +3,6 @@ import fetch from "node-fetch"; // Untuk mengunduh file dari URL
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const { GoogleAIFileManager } = require("@google/generative-ai/server");
 const fs = require('fs'); // Untuk menyimpan file lokal
-const mime = require('mime-types');
 const path = require('path');
 // API Key untuk Gemini
 const apiKey = 'AIzaSyBPzp-ALBhPcSsQUyUb_IseKa-wN504RUE'; 
