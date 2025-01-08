@@ -163,6 +163,11 @@ export default function Home() {
           </p>
         </div>
 
+        <div className='w-full text-center flex flex-col justify-center gap-2 items-center'>
+          <p className="text-sm text-gray-500">Jika ini membantu kamu, dan kamu ingin traktir aku, silahkan klik dibawah ini ya.</p>
+          <a href="https://trakteer.id/dhany_nabati/tip" target="_blank"><img id="wse-buttons-preview" src="https://edge-cdn.trakteer.id/images/embed/trbtn-red-1.png?date=18-11-2023" height="40" style={{border:"0px;height:40px;"}} alt="Trakteer Saya" /></a>
+        </div>
+
         <Card className="p-8 shadow-xl bg-white/80 backdrop-blur-sm border-t border-l border-white/20">
           <div className="space-y-6">
             <div>

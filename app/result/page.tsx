@@ -229,6 +229,10 @@ export default function Result() {
           </h1>
           <p className="text-xl text-gray-600">
           </p>
+          <div className='w-full text-center flex flex-col justify-center gap-2 items-center mb-5'>
+            <p className="text-sm text-gray-500">Jika ini membantu kamu, dan kamu ingin traktir aku, silahkan klik dibawah ini ya.</p>
+            <a href="https://trakteer.id/dhany_nabati/tip" target="_blank"><img id="wse-buttons-preview" src="https://edge-cdn.trakteer.id/images/embed/trbtn-red-1.png?date=18-11-2023" height="40" style={{border:"0px;height:40px;"}} alt="Trakteer Saya" /></a>
+          </div>
           {/* Compatibility Score */}
           <div className="mb-6">
             <h2 className="text-xl font-semibold">Skor Kecocokan</h2>
