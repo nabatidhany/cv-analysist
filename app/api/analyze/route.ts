@@ -57,8 +57,15 @@ export async function POST(request: any) {
   try {
     const { fileUrl, jobDescription } = await request.json();
 
+    let tempraryImageDirectory: string;
+    if (process.env.DEV && process.env.DEV === 'Yes') {
+      tempraryImageDirectory = path.join(__dirname, `../../tmp/`);
+    } else {
+      tempraryImageDirectory = '/tmp/';
+    }
+    const outputPath = `${tempraryImageDirectory}downloaded_file`; // Anda bisa mengganti path sesuai kebutuhan
     // Tentukan path untuk menyimpan file secara lokal
-    const outputPath = './downloaded_file'; // Anda bisa mengganti path sesuai kebutuhan
+    // const outputPath = './downloaded_file'; // Anda bisa mengganti path sesuai kebutuhan
 
     // Unduh file dari URL dan simpan secara lokal
     const downloadedFilePath = await downloadFile(fileUrl, outputPath);
