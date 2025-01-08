@@ -200,7 +200,7 @@ export default function Result() {
         pagebreak: { mode: 'avoid-all' },
         margin:       [20, 0, 20, 0],
       })
-      .save('datauristring').then((data: string) => {
+      .save('optimize-cv').then((data: string) => {
         // print the base64 string, call save instead of outputPdf if you just want to save it.    
       });
     });
