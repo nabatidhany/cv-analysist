@@ -1,9 +1,8 @@
 "use client";
-
 import { useResultStore } from "@/store/resultStore";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import html2pdf from 'html2pdf.js/dist/html2pdf.min';
+// import html2pdf from 'html2pdf.js/dist/html2pdf.min';
 import ReactDOMServer from 'react-dom/server';
 import Link from "next/link";
 import { MoveLeft } from "lucide-react";
@@ -193,11 +192,25 @@ export default function Result() {
     // const printElement = pdfJSX();
     const printElement = ReactDOMServer.renderToString(pdfJSX(optimized_cv));
     // console.log(printElement);
+    
+    // @ts-ignore
+    import('html2pdf.js').then((html2pdf) => {
+      html2pdf.default().from(printElement).
+      set({
+        pagebreak: { mode: 'avoid-all' },
+        margin:       [20, 0, 20, 0],
+      })
+      .save('datauristring').then((data: string) => {
+        // print the base64 string, call save instead of outputPdf if you just want to save it.    
+      });
+    });
 
-    html2pdf().set({
-      pagebreak: { mode: 'avoid-all' },
-      margin:       [20, 0, 20, 0],
-    }).from(printElement).save(`optimize-cv.pdf`);
+
+    // html2pdf().set({
+    //   pagebreak: { mode: 'avoid-all' },
+    //   margin:       [20, 0, 20, 0],
+    // }).from(printElement).save(`optimize-cv.pdf`);
+
     // html2pdf()
     // .from(printElement)
     // .set({
