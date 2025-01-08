@@ -12,6 +12,8 @@ import { useToast } from "@/components/ui/use-toast";
 import { supabase } from "@/lib/supabase";
 import { useRouter } from "next/navigation";
 import { useResultStore } from "@/store/resultStore";
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { AlertDialogHeader } from "@/components/ui/alert-dialog";
 
 export default function Home() {
   const [file, setFile] = useState<File | null>(null);
@@ -123,6 +125,31 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 py-12 px-4">
+      <Dialog open={isAnalyzing}>
+        <DialogContent onInteractOutside={(e) => {
+          e.preventDefault();
+        }} style={{borderRadius: 20}} className="sm:max-w-[425px]">
+          <DialogHeader>
+            <DialogTitle>
+              {isAnalyzing && (
+                <div className="space-y-2">
+                  <p className="text-sm text-center text-gray-600">
+                    {uploadProgress < 100 ? "Uploading..." : "Analyzing..."}
+                  </p>
+                </div>
+              )}
+            </DialogTitle>
+            <DialogDescription>
+              <div className="w-full h-60 flex justify-center items-center">
+                {/* COntent iklan goes here */}
+                <img className="h-52" src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExZm9ycGp6NG00c3p1MzRlYXFvaGJ6N25nMXl3c3h2eDVodGdmbWNzZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xT9DPldJHzZKtOnEn6/giphy.webp" alt="load" />
+              </div>
+              "Just a moment, we're getting everything ready for you. It shouldn't take long."
+            </DialogDescription>
+            <Progress value={uploadProgress} className="h-2" />
+          </DialogHeader>
+        </DialogContent>
+      </Dialog>
       <div className="max-w-4xl mx-auto space-y-8">
         <div className="text-center space-y-4">
           <div className="flex items-center justify-center space-x-2">
